@@ -1,0 +1,1 @@
+export { createUsuarios } from './createData.crud';
