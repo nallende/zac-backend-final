@@ -7,40 +7,40 @@ import { Afp } from "./Afp";
 @Entity("afp_trabajador", { schema: "zac" })
 export class AfpTrabajador {
   @Column("int", { primary: true, name: "idempresa" })
-  public idempresa!: number;
+  idempresa: number;
 
   @Column("int", { primary: true, name: "idafp_trabajador" })
-  public idafpTrabajador!: number;
+  idafpTrabajador: number;
 
   @Column("int", { primary: true, name: "idafp" })
-  public idafp!: number;
+  idafp: number;
 
   @Column("int", { primary: true, name: "idtrabajador" })
-  public idtrabajador!: number;
+  idtrabajador: number;
 
   @Column("double", { name: "afp_porcentaje", nullable: true, precision: 22 })
-  public afpPorcentaje!: number | null;
+  afpPorcentaje: number | null;
 
   @Column("datetime", { name: "aftr_feccre" })
-  public aftrFeccre!: Date;
+  aftrFeccre: Date;
 
   @Column("datetime", { name: "aftr_fecmod" })
-  public aftrFecmod!: Date;
+  aftrFecmod: Date;
 
   @Column("tinyint", { name: "aftr_estado" })
-  public aftrEstado!: number;
+  aftrEstado: number;
 
   @ManyToOne(() => Trabajador, (trabajador) => trabajador.afpTrabajadors, {
     onDelete: "NO ACTION",
     onUpdate: "NO ACTION",
   })
   @JoinColumn([{ name: "idtrabajador", referencedColumnName: "idtrabajador" }])
-  public idtrabajador2!: Trabajador;
+  idtrabajador2: Trabajador;
 
   @ManyToOne(() => Afp, (afp) => afp.afpTrabajadors, {
     onDelete: "NO ACTION",
     onUpdate: "NO ACTION",
   })
   @JoinColumn([{ name: "idafp", referencedColumnName: "idafp" }])
-  public idafp2!: Afp;
+  idafp2: Afp;
 }

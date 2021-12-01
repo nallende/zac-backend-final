@@ -4,32 +4,32 @@ import { AfpTrabajador } from "./AfpTrabajador";
 @Entity("afp", { schema: "zac" })
 export class Afp {
   @Column("int", { primary: true, name: "idempresa" })
-  public idempresa!: number;
+  idempresa: number;
 
   @Column("int", { primary: true, name: "idafp" })
-  public idafp!: number;
+  idafp: number;
 
   @Column("varchar", { name: "afp_nombre", length: 60 })
-  public afpNombre!: string;
+  afpNombre: string;
 
   @Column("varchar", { name: "afp_contacto", nullable: true, length: 45 })
-  public afpContacto!: string | null;
+  afpContacto: string | null;
 
   @Column("varchar", { name: "afp_telefono", nullable: true, length: 12 })
-  public afpTelefono!: string | null;
+  afpTelefono: string | null;
 
   @Column("varchar", { name: "afp_mail", nullable: true, length: 80 })
-  public afpMail!: string | null;
+  afpMail: string | null;
 
   @Column("datetime", { name: "afp_feccre" })
-  public afpFeccre!: Date;
+  afpFeccre: Date;
 
   @Column("datetime", { name: "afp_fecmod" })
-  public afpFecmod!: Date;
+  afpFecmod: Date;
 
   @Column("tinyint", { name: "afp_estado" })
-  public afpEstado!: number;
+  afpEstado: number;
 
   @OneToMany(() => AfpTrabajador, (afpTrabajador) => afpTrabajador.idafp2)
-  public afpTrabajadors!: AfpTrabajador[];
+  afpTrabajadors: AfpTrabajador[];
 }

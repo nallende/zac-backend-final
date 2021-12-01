@@ -1,6 +1,6 @@
 import { Connection, Repository } from 'typeorm';
 import { name, internet, random, date, lorem, hacker } from 'faker/locale/es';
-import { Usuario } from '../models';
+import { Usuario } from '../entity';
 import { writeFileSync } from 'fs';
 import { phone } from 'faker/locale/es_MX';
 

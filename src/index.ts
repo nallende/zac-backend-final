@@ -1,27 +1,25 @@
 import 'reflect-metadata'
 import { createConnection} from 'typeorm'
 import app from './app';
-
+//import { smokeTest } from './smoke-test';
+//import {createUsuarios} from './utils'    
 
 import {Afp, AfpTrabajador, Cargo, Empresa,
      Modulo, ModuloEmpresa, Salud, Tipocontrato, Trabajador, 
-     Usuario, UsuarioEmpresa,User} from "./models";
-
-import {createUsuarios} from './utils'    
-createConnection();
-
-
-
+     Usuario, UsuarioEmpresa} from "./entities";
 
 
 createConnection().then(async connection => {
 
-    await connection.runMigrations();
+   
     // tests out repo functionality
     // might be commented out
-    await smokeTest(connection);
+    //await smokeTest(connection);
 
-    // start server
-    app.listen(8080, () => console.log('server running on port 8080'));
+    // se activa Servidor
+    const port = 3001
+    app.listen(process.env.PORT || 3001, ()=>console.log(`Servidor activo en http://localhost:${port}`));
+   
+    await connection.runMigrations();
 
 }).catch(error => console.log(error));

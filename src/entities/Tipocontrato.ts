@@ -3,20 +3,20 @@ import { Column, Entity } from "typeorm";
 @Entity("tipocontrato", { schema: "zac" })
 export class Tipocontrato {
   @Column("int", { primary: true, name: "idempresa" })
-  idempresa!: number;
+  idempresa: number;
 
   @Column("int", { primary: true, name: "idtipocontrato" })
-  idtipocontrato!: number;
+  idtipocontrato: number;
 
   @Column("varchar", { name: "tico_nombre", length: 45 })
-  ticoNombre!: string;
+  ticoNombre: string;
 
   @Column("datetime", { name: "tico_feccre" })
-  ticoFeccre?: Date;
+  ticoFeccre: Date;
 
   @Column("datetime", { name: "tico_fecmod" })
-  ticoFecmod!: Date;
+  ticoFecmod: Date;
 
   @Column("tinyint", { name: "tico_estado" })
-  ticoEstado!: number;
+  ticoEstado: number;
 }

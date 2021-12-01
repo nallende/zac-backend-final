@@ -14,34 +14,34 @@ import { Empresa } from "./Empresa";
 @Entity("usuario_empresa", { schema: "zac" })
 export class UsuarioEmpresa {
   @PrimaryGeneratedColumn({ type: "int", name: "idusuario_empresa" })
-  public idusuarioEmpresa!: number;
+  idusuarioEmpresa: number;
 
   @Column("int", { primary: true, name: "idusuario" })
-  public idusuario!: number;
+  idusuario: number;
 
   @Column("int", { primary: true, name: "idempresa" })
-  public idempresa!: number;
+  idempresa: number;
 
   @Column("datetime", { name: "usem_feccre", nullable: true })
-  public usemFeccre!: Date | null;
+  usemFeccre: Date | null;
 
   @Column("datetime", { name: "usem_fecmod", nullable: true })
-  public usemFecmod!: Date | null;
+  usemFecmod: Date | null;
 
   @Column("tinyint", { name: "usem_estado", nullable: true })
-  public usemEstado!: number | null;
+  usemEstado: number | null;
 
   @ManyToOne(() => Usuario, (usuario) => usuario.usuarioEmpresas, {
     onDelete: "NO ACTION",
     onUpdate: "NO ACTION",
   })
   @JoinColumn([{ name: "idusuario", referencedColumnName: "idusuario" }])
-  public idusuario2!: Usuario;
+  idusuario2: Usuario;
 
   @ManyToOne(() => Empresa, (empresa) => empresa.usuarioEmpresas, {
     onDelete: "NO ACTION",
     onUpdate: "NO ACTION",
   })
   @JoinColumn([{ name: "idempresa", referencedColumnName: "idempresa" }])
-  public idempresa2!: Empresa;
+  idempresa2: Empresa;
 }
