@@ -2,7 +2,7 @@ import 'reflect-metadata'
 import { createConnection} from 'typeorm'
 import app from './app';
 //import { smokeTest } from './smoke-test';
-//import {createUsuarios} from './utils'    
+import {createUsuarios} from './utils'    
 
 import {Afp, AfpTrabajador, Cargo, Empresa,
      Modulo, ModuloEmpresa, Salud, Tipocontrato, Trabajador, 
@@ -22,5 +22,6 @@ createConnection().then(async connection => {
     
     await connection.synchronize(true);
     await connection.runMigrations();
+    await createUsuarios(connection);
 
 }).catch(error => console.log(error));

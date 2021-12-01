@@ -14,6 +14,11 @@ import { SharedProp } from "./sharedProp.helper";
 @Index("isusuario_idx", ["idusuario"], {})
 @Entity("usuario_empresa", { schema: "zac" })
 export class UsuarioEmpresa extends SharedProp{
+
+  
+
+
+
   @PrimaryGeneratedColumn({ type: "int", name: "idusuario_empresa" })
   idusuarioEmpresa: number;
 
@@ -30,7 +35,7 @@ export class UsuarioEmpresa extends SharedProp{
   // usemFecmod: Date | null;
 
   @Column("tinyint", { name: "usem_estado", nullable: true })
-  usemEstado: number | null;
+  usemEstado: number | null; // pienso que no debiese ser null si es un boolean 1 o 0???
 
   @ManyToOne(() => Usuario, (usuario) => usuario.usuarioEmpresas, {
     onDelete: "NO ACTION",

@@ -2,14 +2,14 @@ import { UpdateDateColumn, CreateDateColumn } from 'typeorm';
 
 export class SharedProp {
   @CreateDateColumn({
-    default: () => 'CURRENT_TIMESTAMP',
+    default: () => 'CURRENT_DATE',
     type: 'datetime',
     name: 'created_at',
   })
   createdAt: Date;
 
   @UpdateDateColumn({
-    default: () => 'CURRENT_TIMESTAMP',
+    default: () => 'CURRENT_DATE',
     type: 'datetime',
     name: 'updated_at',
   })

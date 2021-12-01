@@ -1,11 +1,14 @@
 import { Column, Entity, Index, JoinColumn, ManyToOne } from "typeorm";
 import { Trabajador } from "./Trabajador";
 import { Afp } from "./Afp";
+import { SharedProp } from "./sharedProp.helper";
 
 @Index("idafp_idx", ["idafp"], {})
 @Index("idtrabajador_idx", ["idtrabajador"], {})
 @Entity("afp_trabajador", { schema: "zac" })
-export class AfpTrabajador {
+
+export class AfpTrabajador extends SharedProp {
+  
   @Column("int", { primary: true, name: "idempresa" })
   idempresa: number;
 
@@ -21,11 +24,11 @@ export class AfpTrabajador {
   @Column("double", { name: "afp_porcentaje", nullable: true, precision: 22 })
   afpPorcentaje: number | null;
 
-  @Column("datetime", { name: "aftr_feccre" })
-  aftrFeccre: Date;
+  // @Column("datetime", { name: "aftr_feccre" })
+  // aftrFeccre: Date;
 
-  @Column("datetime", { name: "aftr_fecmod" })
-  aftrFecmod: Date;
+  // @Column("datetime", { name: "aftr_fecmod" })
+  // aftrFecmod: Date;
 
   @Column("tinyint", { name: "aftr_estado" })
   aftrEstado: number;

@@ -4,6 +4,32 @@ import { UsuarioEmpresa } from "./UsuarioEmpresa";
 
 @Entity("usuario", { schema: "zac" })
 export class Usuario  extends SharedProp {
+
+  constructor(
+    usuaNombre: string,
+    usuaApellido: string,
+    usuaMail: string,
+    usuaTelefono: string,
+    usuaLogin: string,
+    usuaPassword: string,
+    // usuaFeccre: Date,
+    // usuaFecmod:  Date | null,
+    usuaEstado: number,
+    )  {super()
+      this.usuaNombre = usuaNombre;
+      this.usuaApellido = usuaApellido;
+      this.usuaMail = usuaMail;
+      this.usuaTelefono = usuaTelefono;
+      this.usuaLogin = usuaLogin;
+      this.usuaPassword = usuaPassword;
+      // this.usuaFeccre = usuaFeccre;
+      // this.usuaFecmod = usuaFecmod;
+      this.usuaEstado = usuaEstado;
+      }
+
+
+
+
   @PrimaryGeneratedColumn({ type: "int", name: "idusuario" })
   idusuario: number;
 
