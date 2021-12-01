@@ -1,8 +1,9 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { SharedProp } from "./sharedProp.helper";
 import { UsuarioEmpresa } from "./UsuarioEmpresa";
 
 @Entity("usuario", { schema: "zac" })
-export class Usuario {
+export class Usuario  extends SharedProp {
   @PrimaryGeneratedColumn({ type: "int", name: "idusuario" })
   idusuario: number;
 
@@ -24,11 +25,11 @@ export class Usuario {
   @Column("varchar", { name: "usua_password", length: 64 })
   usuaPassword: string;
 
-  @Column("datetime", { name: "usua_feccre" })
-  usuaFeccre: Date;
+  // @Column("datetime", { name: "usua_feccre" })
+  // usuaFeccre: Date;
 
-  @Column("datetime", { name: "usua_fecmod", nullable: true })
-  usuaFecmod: Date | null;
+  // @Column("datetime", { name: "usua_fecmod", nullable: true })
+  // usuaFecmod: Date | null;
 
   @Column("tinyint", { name: "usua_estado" })
   usuaEstado: number;
