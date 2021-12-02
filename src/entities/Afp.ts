@@ -1,35 +1,20 @@
-import { Column, Entity, OneToMany } from "typeorm";
-import { AfpTrabajador } from "./AfpTrabajador";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Contrato } from "./Contrato";
 
-@Entity("afp", { schema: "zac" })
+@Entity("afp", { schema: "zac_cloud" })
 export class Afp {
-  @Column("int", { primary: true, name: "idempresa" })
-  idempresa: number;
-
-  @Column("int", { primary: true, name: "idafp" })
+  @PrimaryGeneratedColumn({ type: "int", name: "idafp" })
   idafp: number;
 
-  @Column("varchar", { name: "afp_nombre", length: 60 })
-  afpNombre: string;
+  @Column("varchar", { name: "nombre", length: 50 })
+  nombre: string;
 
-  @Column("varchar", { name: "afp_contacto", nullable: true, length: 45 })
-  afpContacto: string | null;
+  @Column("tinyint", { name: "estado", width: 1, default: () => "'1'" })
+  estado: boolean;
 
-  @Column("varchar", { name: "afp_telefono", nullable: true, length: 12 })
-  afpTelefono: string | null;
+  @Column("datetime", { name: "fecha", default: () => "CURRENT_TIMESTAMP" })
+  fecha: Date;
 
-  @Column("varchar", { name: "afp_mail", nullable: true, length: 80 })
-  afpMail: string | null;
-
-  @Column("datetime", { name: "afp_feccre" })
-  afpFeccre: Date;
-
-  @Column("datetime", { name: "afp_fecmod" })
-  afpFecmod: Date;
-
-  @Column("tinyint", { name: "afp_estado" })
-  afpEstado: number;
-
-  @OneToMany(() => AfpTrabajador, (afpTrabajador) => afpTrabajador.idafp2)
-  afpTrabajadors: AfpTrabajador[];
+  @OneToMany(() => Contrato, (contrato) => contrato.idafp2)
+  contratoes: Contrato[];
 }

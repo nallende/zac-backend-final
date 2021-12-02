@@ -1,22 +1,20 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Contrato } from "./Contrato";
 
-@Entity("cargo", { schema: "zac" })
+@Entity("cargo", { schema: "zac_cloud" })
 export class Cargo {
-  @Column("int", { name: "idempresa" })
-  idempresa: number;
-
   @PrimaryGeneratedColumn({ type: "int", name: "idcargo" })
   idcargo: number;
 
-  @Column("varchar", { name: "carg_nombre", length: 45 })
-  cargNombre: string;
+  @Column("varchar", { name: "nombre", length: 60 })
+  nombre: string;
 
-  @Column("datetime", { name: "carg_feccre" })
-  cargFeccre: Date;
+  @Column("tinyint", { name: "estado", width: 1, default: () => "'1'" })
+  estado: boolean;
 
-  @Column("datetime", { name: "carg_fecmod" })
-  cargFecmod: Date;
+  @Column("timestamp", { name: "fecha", default: () => "CURRENT_TIMESTAMP" })
+  fecha: Date;
 
-  @Column("tinyint", { name: "carg_estado" })
-  cargEstado: number;
+  @OneToMany(() => Contrato, (contrato) => contrato.idcargo2)
+  contratoes: Contrato[];
 }

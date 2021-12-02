@@ -1,22 +1,19 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { ModuloEmpresa } from "./ModuloEmpresa";
 
-@Entity("modulo", { schema: "zac" })
+@Entity("modulo", { schema: "zac_cloud" })
 export class Modulo {
   @PrimaryGeneratedColumn({ type: "int", name: "idmodulo" })
   idmodulo: number;
 
-  @Column("varchar", { name: "modu_nombre", nullable: true, length: 45 })
-  moduNombre: string | null;
+  @Column("varchar", { name: "nombre", length: 100 })
+  nombre: string;
 
-  @Column("datetime", { name: "modu_feccrea", nullable: true })
-  moduFeccrea: Date | null;
+  @Column("tinyint", { name: "estado", width: 1, default: () => "'1'" })
+  estado: boolean;
 
-  @Column("datetime", { name: "modu_fecmod", nullable: true })
-  moduFecmod: Date | null;
-
-  @Column("tinyint", { name: "modu_estado", nullable: true })
-  moduEstado: number | null;
+  @Column("datetime", { name: "fecha", default: () => "CURRENT_TIMESTAMP" })
+  fecha: Date;
 
   @OneToMany(() => ModuloEmpresa, (moduloEmpresa) => moduloEmpresa.idmodulo2)
   moduloEmpresas: ModuloEmpresa[];

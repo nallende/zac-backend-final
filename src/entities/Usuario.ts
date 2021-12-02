@@ -1,64 +1,31 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
-import { SharedProp } from "./sharedProp.helper";
 import { UsuarioEmpresa } from "./UsuarioEmpresa";
 
-@Entity("usuario", { schema: "zac" })
-export class Usuario  extends SharedProp {
-
-  constructor(
-    usuaNombre: string,
-    usuaApellido: string,
-    usuaMail: string,
-    usuaTelefono: string,
-    usuaLogin: string,
-    usuaPassword: string,
-    // usuaFeccre: Date,
-    // usuaFecmod:  Date | null,
-    usuaEstado: number,
-    )  {super()
-      this.usuaNombre = usuaNombre;
-      this.usuaApellido = usuaApellido;
-      this.usuaMail = usuaMail;
-      this.usuaTelefono = usuaTelefono;
-      this.usuaLogin = usuaLogin;
-      this.usuaPassword = usuaPassword;
-      // this.usuaFeccre = usuaFeccre;
-      // this.usuaFecmod = usuaFecmod;
-      this.usuaEstado = usuaEstado;
-      }
-
-
-
-
+@Entity("usuario", { schema: "zac_cloud" })
+export class Usuario {
   @PrimaryGeneratedColumn({ type: "int", name: "idusuario" })
   idusuario: number;
 
-  @Column("varchar", { name: "usua_nombre", length: 60 })
-  usuaNombre: string;
+  @Column("varchar", { name: "nombre", length: 50 })
+  nombre: string;
 
-  @Column("varchar", { name: "usua_apellido", length: 45 })
-  usuaApellido: string;
+  @Column("varchar", { name: "apellido", length: 50 })
+  apellido: string;
 
-  @Column("varchar", { name: "usua_mail", length: 80 })
-  usuaMail: string;
+  @Column("varchar", { name: "email", length: 50 })
+  email: string;
 
-  @Column("varchar", { name: "usua_telefono", length: 45 })
-  usuaTelefono: string;
+  @Column("varchar", { name: "login", length: 50 })
+  login: string;
 
-  @Column("varchar", { name: "usua_login", length: 45 })
-  usuaLogin: string;
+  @Column("varchar", { name: "password", length: 16 })
+  password: string;
 
-  @Column("varchar", { name: "usua_password", length: 64 })
-  usuaPassword: string;
+  @Column("int", { name: "estado", default: () => "'1'" })
+  estado: number;
 
-  // @Column("datetime", { name: "usua_feccre" })
-  // usuaFeccre: Date;
-
-  // @Column("datetime", { name: "usua_fecmod", nullable: true })
-  // usuaFecmod: Date | null;
-
-  @Column("tinyint", { name: "usua_estado" })
-  usuaEstado: number;
+  @Column("datetime", { name: "fecha", default: () => "CURRENT_TIMESTAMP" })
+  fecha: Date;
 
   @OneToMany(
     () => UsuarioEmpresa,

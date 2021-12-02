@@ -1,22 +1,20 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Descuento } from "./Descuento";
 
-@Entity("tipodescuento", { schema: "zac" })
+@Entity("tipodescuento", { schema: "zac_cloud" })
 export class Tipodescuento {
-  @Column("int", { primary: true, name: "idempresa" })
-  idempresa: number;
-
   @PrimaryGeneratedColumn({ type: "int", name: "idtipodescuento" })
   idtipodescuento: number;
 
-  @Column("varchar", { name: "tide_nombre", nullable: true, length: 45 })
-  tideNombre: string | null;
+  @Column("varchar", { name: "nombre", length: 50 })
+  nombre: string;
 
-  @Column("datetime", { name: "tide_feccre", nullable: true })
-  tideFeccre: Date | null;
+  @Column("tinyint", { name: "estado", width: 1, default: () => "'1'" })
+  estado: boolean;
 
-  @Column("datetime", { name: "tide_fecmod", nullable: true })
-  tideFecmod: Date | null;
+  @Column("datetime", { name: "fecha", default: () => "CURRENT_TIMESTAMP" })
+  fecha: Date;
 
-  @Column("tinyint", { name: "tide_estado", nullable: true })
-  tideEstado: number | null;
+  @OneToMany(() => Descuento, (descuento) => descuento.idtipodescuento2)
+  descuentos: Descuento[];
 }

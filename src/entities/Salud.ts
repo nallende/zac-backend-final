@@ -1,38 +1,20 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
-import { SaludTrabajador } from "./SaludTrabajador";
+import { Contrato } from "./Contrato";
 
-@Entity("salud", { schema: "zac" })
+@Entity("salud", { schema: "zac_cloud" })
 export class Salud {
   @PrimaryGeneratedColumn({ type: "int", name: "idsalud" })
   idsalud: number;
 
-  @Column("int", { name: "idempresa" })
-  idempresa: number;
+  @Column("varchar", { name: "nombre", length: 50 })
+  nombre: string;
 
-  @Column("varchar", { name: "salu_nombre", length: 80 })
-  saluNombre: string;
+  @Column("tinyint", { name: "estado", default: () => "'1'" })
+  estado: number;
 
-  @Column("varchar", { name: "salu_contacto", length: 45 })
-  saluContacto: string;
+  @Column("datetime", { name: "fecha", default: () => "CURRENT_TIMESTAMP" })
+  fecha: Date;
 
-  @Column("varchar", { name: "salu_telefono", length: 12 })
-  saluTelefono: string;
-
-  @Column("varchar", { name: "salu_mail", length: 80 })
-  saluMail: string;
-
-  @Column("datetime", { name: "salu_feccre" })
-  saluFeccre: Date;
-
-  @Column("datetime", { name: "salu_fecmod" })
-  saluFecmod: Date;
-
-  @Column("tinyint", { name: "salu_estado" })
-  saluEstado: number;
-
-  @OneToMany(
-    () => SaludTrabajador,
-    (saludTrabajador) => saludTrabajador.idsalud
-  )
-  saludTrabajadors: SaludTrabajador[];
+  @OneToMany(() => Contrato, (contrato) => contrato.idsalud2)
+  contratoes: Contrato[];
 }

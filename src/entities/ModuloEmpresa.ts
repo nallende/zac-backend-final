@@ -6,37 +6,27 @@ import {
   ManyToOne,
   PrimaryGeneratedColumn,
 } from "typeorm";
-import { Modulo } from "./Modulo";
 import { Empresa } from "./Empresa";
+import { Modulo } from "./Modulo";
 
-@Index("idmepresa_idx", ["idempresa"], {})
-@Index("idmodulo_idx", ["idmodulo"], {})
-@Entity("modulo_empresa", { schema: "zac" })
+@Index("idempresa", ["idempresa"], {})
+@Index("idmodulo", ["idmodulo"], {})
+@Entity("modulo_empresa", { schema: "zac_cloud" })
 export class ModuloEmpresa {
-  @PrimaryGeneratedColumn({ type: "int", name: "idmodulo_empresa" })
-  idmoduloEmpresa: number;
+  @PrimaryGeneratedColumn({ type: "int", name: "idmoduloempresa" })
+  idmoduloempresa: number;
 
-  @Column("int", { primary: true, name: "idmodulo" })
+  @Column("int", { name: "idmodulo" })
   idmodulo: number;
 
-  @Column("int", { primary: true, name: "idempresa" })
+  @Column("int", { name: "idempresa" })
   idempresa: number;
 
-  @Column("datetime", { name: "moem_feccre", nullable: true })
-  moemFeccre: Date | null;
+  @Column("tinyint", { name: "estado", width: 1, default: () => "'1'" })
+  estado: boolean;
 
-  @Column("datetime", { name: "moem_fecmod", nullable: true })
-  moemFecmod: Date | null;
-
-  @Column("tinyint", { name: "moem_estado", nullable: true })
-  moemEstado: number | null;
-
-  @ManyToOne(() => Modulo, (modulo) => modulo.moduloEmpresas, {
-    onDelete: "NO ACTION",
-    onUpdate: "NO ACTION",
-  })
-  @JoinColumn([{ name: "idmodulo", referencedColumnName: "idmodulo" }])
-  idmodulo2: Modulo;
+  @Column("datetime", { name: "fecha", default: () => "CURRENT_TIMESTAMP" })
+  fecha: Date;
 
   @ManyToOne(() => Empresa, (empresa) => empresa.moduloEmpresas, {
     onDelete: "NO ACTION",
@@ -44,4 +34,11 @@ export class ModuloEmpresa {
   })
   @JoinColumn([{ name: "idempresa", referencedColumnName: "idempresa" }])
   idempresa2: Empresa;
+
+  @ManyToOne(() => Modulo, (modulo) => modulo.moduloEmpresas, {
+    onDelete: "NO ACTION",
+    onUpdate: "NO ACTION",
+  })
+  @JoinColumn([{ name: "idmodulo", referencedColumnName: "idmodulo" }])
+  idmodulo2: Modulo;
 }

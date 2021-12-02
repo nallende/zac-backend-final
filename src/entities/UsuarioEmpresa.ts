@@ -6,43 +6,27 @@ import {
   ManyToOne,
   PrimaryGeneratedColumn,
 } from "typeorm";
-import { Usuario } from "./Usuario";
 import { Empresa } from "./Empresa";
-import { SharedProp } from "./sharedProp.helper";
+import { Usuario } from "./Usuario";
 
-@Index("idempresa_idx", ["idempresa"], {})
-@Index("isusuario_idx", ["idusuario"], {})
-@Entity("usuario_empresa", { schema: "zac" })
-export class UsuarioEmpresa extends SharedProp{
+@Index("idempresa", ["idempresa"], {})
+@Index("idusuario", ["idusuario"], {})
+@Entity("usuario_empresa", { schema: "zac_cloud" })
+export class UsuarioEmpresa {
+  @PrimaryGeneratedColumn({ type: "int", name: "idusuarioempresa" })
+  idusuarioempresa: number;
 
-  
-
-
-
-  @PrimaryGeneratedColumn({ type: "int", name: "idusuario_empresa" })
-  idusuarioEmpresa: number;
-
-  @Column("int", { primary: true, name: "idusuario" })
+  @Column("int", { name: "idusuario" })
   idusuario: number;
 
-  @Column("int", { primary: true, name: "idempresa" })
+  @Column("int", { name: "idempresa" })
   idempresa: number;
 
-  // @Column("datetime", { name: "usem_feccre", nullable: true })
-  // usemFeccre: Date | null;
+  @Column("tinyint", { name: "estado", width: 1, default: () => "'1'" })
+  estado: boolean;
 
-  // @Column("datetime", { name: "usem_fecmod", nullable: true })
-  // usemFecmod: Date | null;
-
-  @Column("tinyint", { name: "usem_estado", nullable: true })
-  usemEstado: number | null; // pienso que no debiese ser null si es un boolean 1 o 0???
-
-  @ManyToOne(() => Usuario, (usuario) => usuario.usuarioEmpresas, {
-    onDelete: "NO ACTION",
-    onUpdate: "NO ACTION",
-  })
-  @JoinColumn([{ name: "idusuario", referencedColumnName: "idusuario" }])
-  idusuario2: Usuario;
+  @Column("datetime", { name: "fecha", default: () => "CURRENT_TIMESTAMP" })
+  fecha: Date;
 
   @ManyToOne(() => Empresa, (empresa) => empresa.usuarioEmpresas, {
     onDelete: "NO ACTION",
@@ -50,4 +34,11 @@ export class UsuarioEmpresa extends SharedProp{
   })
   @JoinColumn([{ name: "idempresa", referencedColumnName: "idempresa" }])
   idempresa2: Empresa;
+
+  @ManyToOne(() => Usuario, (usuario) => usuario.usuarioEmpresas, {
+    onDelete: "NO ACTION",
+    onUpdate: "NO ACTION",
+  })
+  @JoinColumn([{ name: "idusuario", referencedColumnName: "idusuario" }])
+  idusuario2: Usuario;
 }
