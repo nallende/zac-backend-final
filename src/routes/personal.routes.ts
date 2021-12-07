@@ -1,12 +1,19 @@
-import { Request, Response, Router } from 'express';
-import PersonalController from '../controller/PersonalController'
+import { Router } from "express";
+const router = Router();
 
-const routes = Router();
-//router.get("/personal", PersonalController.listAll;
-//router.get("/personal/:id", PersonalController);
-//router.post("/personal", PersonalController.addNew);
-//router.put("/personal/:id",PersonalController.update);
-//router.delete("/personal/:id", PersonalController.delete);
+import {
+    getPersonals,
+    getPersonal,
+    createPersonal,
+    updatePersonal,
+    deletePersonal
+  } from "../controller/PersonalController";
+
+router.get("/personal", getPersonals);
+router.get("/personal/:id", getPersonal);
+router.post("/personal", createPersonal);
+router.put("/personal/:id",updatePersonal);
+router.delete("/personal/:id", deletePersonal);
 
 
-export { routes };
+export default router;

@@ -1,12 +1,19 @@
-import { Request, Response, Router } from 'express';
-import EmpresaController from '../controller/EmpresaController'
+import { Router } from "express";
+const router = Router();
 
-const routes = Router();
-//router.get("/empresa", EmpresaController.listAll;
-//router.get("/empresa/:id", EmpresaController);
-//router.post("/empresa", EmpresaController.addNew);
-//router.put("/empresa/:id",EmpresaController.update);
-//router.delete("/empresa/:id", EmpresaController.delete);
+import {
+    getEmpresas,
+    getEmpresa,
+    createEmpresa,
+    updateEmpresa,
+    deleteEmpresa
+  } from "../controller/EmpresaController";
+
+router.get("/empresa", getEmpresas);
+router.get("/empresa/:id", getEmpresa);
+router.post("/empresa", createEmpresa);
+router.put("/empresa/:id",updateEmpresa);
+router.delete("/empresa/:id", deleteEmpresa);
 
 
-export { routes };
+export default router;

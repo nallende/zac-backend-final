@@ -1,12 +1,19 @@
-import { Request, Response, Router } from 'express';
-import AfpController from '../controller/AfpController'
+import { Router } from "express";
+const router = Router();
 
-const routes = Router();
-//router.get("/afp", AfpController.listAll;
-//router.get("/afp/:id", AfpController);
-//router.post("/afp", AfpController.addNew);
-//router.put("/afp/:id",AfpController.update);
-//router.delete("/afp/:id", AfpController.delete);
+import {
+    getAfps,
+    getAfp,
+    createAfp,
+    updateAfp,
+    deleteAfp
+  } from "../controller/AfpController";
+
+router.get("/afp", getAfps);
+router.get("/afp/:id", getAfp);
+router.post("/afp", createAfp);
+router.put("/afp/:id",updateAfp);
+router.delete("/afp/:id", deleteAfp);
 
 
-export { routes };
+export default router;
