@@ -1,12 +1,20 @@
 import { Router } from "express";
-import TipoIngresoController from '../controller/TipoIngresoController';
-
 const router = Router();
 
-//router.get("/tipoIngreso", TipoIngresoController.listAll;
-//router.get("/tipoIngreso/:id", TipoIngresoController);
-//router.post("/tipoIngreso", TipoIngresoController.addNew);
-//router.put("/tipoIngreso/:id",TipoIngresoController.update);
-//router.delete("/tipoIngreso/:id", TipoIngresoController.delete);
+import {
+    getTipoIngresos,
+    getTipoIngreso,
+    createTipoIngreso,
+    updateTipoIngreso,
+    deleteTipoIngreso
+  } from "../controller/TipoIngresoController";
+
+
+
+router.get("/tipoIngresos", getTipoIngresos);
+router.get("/tipoIngresos/:id", getTipoIngreso);
+router.post("/tipoIngresos", createTipoIngreso);
+router.put("/tipoIngresos/:id", updateTipoIngreso);
+router.delete("/tipoIngresos/:id", deleteTipoIngreso);
 
 export default router;

@@ -1,7 +1,7 @@
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity("tipoingreso", { schema: "zac_cloud" })
-export class Tipoingreso {
+export class TipoIngreso {
   @PrimaryGeneratedColumn({ type: "int", name: "idtipoingreso" })
   idtipoingreso: number;
 
