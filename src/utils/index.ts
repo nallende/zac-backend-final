@@ -1,1 +1,1 @@
-export { createUsuarios } from './createUsuarios.data';
+export { createUsuarios } from './createUsuariosEmpresa.data';

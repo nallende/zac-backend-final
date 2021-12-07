@@ -4,6 +4,29 @@ import { UsuarioEmpresa } from "./UsuarioEmpresa";
 
 @Entity("empresa", { schema: "zac_cloud" })
 export class Empresa {
+
+  constructor(
+    nombre: string,
+    direccion: string,
+    telefono: number,
+    mail: string,
+    contacto: string,
+    imagen: string,
+    rut: number,
+    estado: boolean,
+  ) {
+    this.nombre = nombre
+    this.direccion = direccion
+    this.telefono= telefono
+    this.mail = mail
+    this.contacto = contacto
+    this.imagen = imagen
+    this.rut = rut
+    this.estado = estado
+  }
+
+
+
   @PrimaryGeneratedColumn({ type: "int", name: "idempresa" })
   idempresa: number;
 
