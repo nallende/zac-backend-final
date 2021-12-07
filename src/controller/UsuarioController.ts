@@ -38,7 +38,7 @@ export const updateUsuario = async (
     return res.json(results);
   }
 
-  return res.json({msg: 'Usuariono Encontrado'});
+  return res.status(404).json({msg: 'Usuario no Encontrado'});
 };
 
 export const deleteUsuario = async (req: Request, res: Response): Promise<Response> => {

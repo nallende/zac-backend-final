@@ -12,9 +12,9 @@ import {
 
 
 router.get("/usuarios", getUsuarios);
-router.get("/usuarios/:id", getUsuario);
-router.post("/usuarios", createUsuario);
-router.put("/usuarios/:id", updateUsuario);
-router.delete("/usuarios/:id", deleteUsuario);
+router.get("/usuario/:id", getUsuario);
+router.post("/usuario", createUsuario);
+router.put("/usuario/:id", updateUsuario);
+router.delete("/usuario/:id", deleteUsuario);
 
 export default router;
