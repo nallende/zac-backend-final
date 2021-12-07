@@ -3,10 +3,27 @@ import { UsuarioEmpresa } from "./UsuarioEmpresa";
 
 @Entity("usuario", { schema: "zac_cloud" })
 export class Usuario {
+  
+  constructor(
+    nombre: string,
+    apellido: string,
+    email: string,
+    login: string,
+    password: string,
+    estado: number
+  ) {
+    this.nombre = nombre
+    this.apellido = apellido
+    this.email = email
+    this.login = login
+    this.password = password
+    this.estado = estado
+  }
+
   @PrimaryGeneratedColumn({ type: "int", name: "idusuario" })
   idusuario: number;
 
-  @Column("varchar", { name: "nombre", length: 50 })
+  @Column("varchar", { name: "nombre", length: 50})
   nombre: string;
 
   @Column("varchar", { name: "apellido", length: 50 })

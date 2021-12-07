@@ -22,7 +22,9 @@ createConnection().then(async connection => {
     app.listen(process.env.PORT || 3001, ()=>console.log(`Servidor activo en http://localhost:${port}`));
     
     await connection.synchronize(true)
-    //await (createUsuarios(connection));
+    await (createUsuarios(connection));
     //await connection runMigrations();
 
 }).catch(error => console.log(error));
+
+

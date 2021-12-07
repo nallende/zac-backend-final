@@ -14,7 +14,7 @@ app.use(express.urlencoded({ extended: false }));
 // routes
 
 //import empresaRoutes from './routes/empresa'
-import usuarioRoutes from './routes/usarios'
+import usuarioRoutes from './routes/usarios.route'
 
 app.use( usuarioRoutes );
 //app.use( empresaRoutes );
