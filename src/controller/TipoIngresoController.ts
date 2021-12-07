@@ -1,12 +1,12 @@
 import { Request, Response } from "express";
 import { getRepository } from "typeorm";
-import { TipoIngreso } from "../entities/TipoIngreso";
+import { Tipoingreso } from "../entities/TipoIngreso";
 
 export const getTipoIngresos = async (
   req: Request,
   res: Response
 ): Promise<Response> => {
-  const tipoIngresos = await getRepository(TipoIngreso).find();
+  const tipoIngresos = await getRepository(Tipoingreso).find();
   return res.json(tipoIngresos);
 };
 
@@ -14,7 +14,7 @@ export const getTipoIngreso = async (
   req: Request,
   res: Response
 ): Promise<Response> => {
-  const results = await getRepository(TipoIngreso).findOne(req.params.id);
+  const results = await getRepository(Tipoingreso).findOne(req.params.id);
   return res.json(results);
 };
 
@@ -22,8 +22,8 @@ export const createTipoIngreso = async (
   req: Request,
   res: Response
 ): Promise<Response> => {
-  const newTipoIngreso = await getRepository(TipoIngreso).create(req.body);
-  const results = await getRepository(TipoIngreso).save(newTipoIngreso);
+  const newTipoIngreso = await getRepository(Tipoingreso).create(req.body);
+  const results = await getRepository(Tipoingreso).save(newTipoIngreso);
   return res.json(results);
 };
 
@@ -31,10 +31,10 @@ export const updateTipoIngreso = async (
   req: Request,
   res: Response
 ): Promise<Response> => {
-  const tipoIngreso = await getRepository(TipoIngreso).findOne(req.params.id);
+  const tipoIngreso = await getRepository(Tipoingreso).findOne(req.params.id);
   if (tipoIngreso) {
-    getRepository(TipoIngreso).merge(tipoIngreso, req.body);
-    const results = await getRepository(TipoIngreso).save(tipoIngreso);
+    getRepository(Tipoingreso).merge(tipoIngreso, req.body);
+    const results = await getRepository(Tipoingreso).save(tipoIngreso);
     return res.json(results);
   }
 
@@ -42,6 +42,6 @@ export const updateTipoIngreso = async (
 };
 
 export const deleteTipoIngreso = async (req: Request, res: Response): Promise<Response> => {
-  const results = await getRepository(TipoIngreso).delete(req.params.id);
+  const results = await getRepository(Tipoingreso).delete(req.params.id);
   return res.json(results);
 };

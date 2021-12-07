@@ -1,6 +1,5 @@
 import * as express from 'express';
 import cors from 'cors';
-//import dotenv from 'dotenv';
 
 
 const app = express();
@@ -13,7 +12,6 @@ app.use(express.urlencoded({ extended: false }));
 
 // routes
 
-//import empresaRoutes from './routes/empresa'
 import afpRoutes from './routes/afp.routes'
 import contratoRoutes from './routes/contrato.routes'
 import empresaRoutes from './routes/empresa.routes'
