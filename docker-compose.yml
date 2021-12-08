@@ -15,4 +15,5 @@ services:
       MYSQL_PASSWORD: "6677"
       MYSQL_DATABASE: "zac"
     volumes: 
-      - "./data:/var/lib/mysql:rw"  
+      - "./data:/var/lib/mysql:rw"   
+      

@@ -6,7 +6,10 @@ export const getUsuarios = async (
   req: Request,
   res: Response
 ): Promise<Response> => {
-  const usuarios = await getRepository(Usuario).find();
+  const usuarios = await getRepository(Usuario)
+  .createQueryBuilder()
+  .addSelect("case(estado) when 0 then 'No Vigente' when 1 then 'Vigente' end", "estadotexto")
+  .getRawMany()
   return res.json(usuarios);
 };
 

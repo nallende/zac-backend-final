@@ -6,7 +6,10 @@ export const getTipoDescuentos = async (
   req: Request,
   res: Response
 ): Promise<Response> => {
-  const tipoDescuento = await getRepository(Tipodescuento).find();
+  const tipoDescuento = await getRepository(Tipodescuento)
+  .createQueryBuilder()
+  .addSelect("case(estado) when 0 then 'No Vigente' when 1 then 'Vigente' end", "estadotexto")
+  .getRawMany()
   return res.json(tipoDescuento);
 };
 

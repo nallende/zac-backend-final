@@ -21,6 +21,12 @@ import { Descuento } from "./Descuento";
 @Index("idtipocontrato", ["idtipocontrato"], {})
 @Entity("contrato", { schema: "zac_cloud" })
 export class Contrato {
+
+
+
+
+
+  
   @PrimaryGeneratedColumn({ type: "int", name: "idcontrato" })
   idcontrato: number;
 

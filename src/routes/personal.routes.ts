@@ -2,14 +2,14 @@ import { Router } from "express";
 const router = Router();
 
 import {
-    getPersonals,
+    getAllPersonal,
     getPersonal,
     createPersonal,
     updatePersonal,
     deletePersonal
   } from "../controller/PersonalController";
 
-router.get("/personal", getPersonals);
+router.get("/personal", getAllPersonal);
 router.get("/personal/:id", getPersonal);
 router.post("/personal", createPersonal);
 router.put("/personal/:id",updatePersonal);

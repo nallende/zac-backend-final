@@ -1,1 +1,2 @@
-export { createUsuarios } from './createUsuariosEmpresa.data';
+export { createUsuarios } from './fakerUsuarios_Empresas';
+export { createPersonal } from './fakerTablaPersonal';

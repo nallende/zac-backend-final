@@ -2,11 +2,14 @@ import { Request, Response } from "express";
 import { getRepository } from "typeorm";
 import { Salud } from "../entities/Salud";
 
-export const getSaluds = async (
+export const getAllSalud = async (
   req: Request,
   res: Response
 ): Promise<Response> => {
-  const salud = await getRepository(Salud).find();
+  const salud = await getRepository(Salud)
+  .createQueryBuilder()
+  .addSelect("case(estado) when 0 then 'No Vigente' when 1 then 'Vigente' end", "estadotexto")
+  .getRawMany()
   return res.json(salud);
 };
 

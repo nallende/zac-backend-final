@@ -6,7 +6,10 @@ export const getCargos = async (
   req: Request,
   res: Response
 ): Promise<Response> => {
-  const cargo = await getRepository(Cargo).find();
+  const cargo = await getRepository(Cargo)
+  .createQueryBuilder()
+  .addSelect("case(estado) when 0 then 'No Vigente' when 1 then 'Vigente' end", "estadotexto")
+  .getRawMany()
   return res.json(cargo);
 };
 

@@ -6,7 +6,10 @@ export const getDescuentos = async (
   req: Request,
   res: Response
 ): Promise<Response> => {
-  const descuento = await getRepository(Descuento).find();
+  const descuento = await getRepository(Descuento)
+  .createQueryBuilder()
+  .addSelect("case(estado) when 0 then 'No Vigente' when 1 then 'Vigente' end", "estadotexto")
+  .getRawMany()
   return res.json(descuento);
 };
 

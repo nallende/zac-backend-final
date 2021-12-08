@@ -2,12 +2,16 @@ import { Request, Response } from "express";
 import { getRepository } from "typeorm";
 import { Personal } from "../entities/Personal";
 
-export const getPersonals = async (
+export const getAllPersonal = async (
   req: Request,
   res: Response
 ): Promise<Response> => {
-  const personals = await getRepository(Personal).find();
-  return res.json(personals);
+  const personals = await getRepository(Personal)
+  .createQueryBuilder()
+  .addSelect("case(estado) when 0 then 'No Vigente' when 1 then 'Vigente' end", "estadotexto")
+  .getRawMany()
+
+return res.json(personals);
 };
 
 export const getPersonal = async (

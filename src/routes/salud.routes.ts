@@ -2,14 +2,14 @@ import { Router } from "express";
 const router = Router();
 
 import {
-    getSaluds,
+    getAllSalud,
     getSalud,
     createSalud,
     updateSalud,
     deleteSalud
   } from "../controller/SaludController";
 
-router.get("/salud", getSaluds);
+router.get("/salud", getAllSalud);
 router.get("/salud/:id", getSalud);
 router.post("/salud", createSalud);
 router.put("/salud/:id",updateSalud);

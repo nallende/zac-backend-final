@@ -6,7 +6,10 @@ export const getTipoIngresos = async (
   req: Request,
   res: Response
 ): Promise<Response> => {
-  const tipoIngresos = await getRepository(Tipoingreso).find();
+  const tipoIngresos = await getRepository(Tipoingreso)
+  .createQueryBuilder()
+  .addSelect("case(estado) when 0 then 'No Vigente' when 1 then 'Vigente' end", "estadotexto")
+  .getRawMany()
   return res.json(tipoIngresos);
 };
 

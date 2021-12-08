@@ -6,7 +6,10 @@ export const getUsuarioEmpresas = async (
   req: Request,
   res: Response
 ): Promise<Response> => {
-  const usuarioEmpresas = await getRepository(UsuarioEmpresa).find();
+  const usuarioEmpresas = await getRepository(UsuarioEmpresa)
+  .createQueryBuilder()
+  .addSelect("case(estado) when 0 then 'No Vigente' when 1 then 'Vigente' end", "estadotexto")
+  .getRawMany()
   return res.json(usuarioEmpresas);
 };
 

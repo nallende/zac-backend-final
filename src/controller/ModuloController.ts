@@ -6,7 +6,10 @@ export const getModulos = async (
   req: Request,
   res: Response
 ): Promise<Response> => {
-  const modulo = await getRepository(Modulo).find();
+  const modulo = await getRepository(Modulo)
+  .createQueryBuilder()
+  .addSelect("case(estado) when 0 then 'No Vigente' when 1 then 'Vigente' end", "estadotexto")
+  .getRawMany()
   return res.json(modulo);
 };
 

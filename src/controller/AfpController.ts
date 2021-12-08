@@ -6,7 +6,10 @@ export const getAfps = async (
   req: Request,
   res: Response
 ): Promise<Response> => {
-  const afp = await getRepository(Afp).find();
+  const afp = await getRepository(Afp)
+  .createQueryBuilder()
+  .addSelect("case(estado) when 0 then 'No Vigente' when 1 then 'Vigente' end", "estadotexto")
+  .getRawMany()
   return res.json(afp);
 };
 

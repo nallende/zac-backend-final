@@ -6,7 +6,10 @@ export const getAllUsers = async (
   req: Request,
   res: Response
 ): Promise<Response> => {
-  const users = await getRepository(Users).find();
+  const users = await getRepository(Users)
+  .createQueryBuilder()
+  .addSelect("case(estado) when 0 then 'No Vigente' when 1 then 'Vigente' end", "estadotexto")
+  .getRawMany()
   return res.json(users);
 };
 

@@ -3,6 +3,28 @@ import { Contrato } from "./Contrato";
 
 @Entity("personal", { schema: "zac_cloud" })
 export class Personal {
+  constructor(
+    rut: string,
+    nombre: string,
+    apellidop: string,
+    apellidom: string,
+    direccion: string,
+    telefono: number,
+    email: string,
+    estado: number,
+    
+  ) {
+    this.rut = rut
+    this.nombre = nombre
+    this.apellidop = apellidop
+    this.apellidom = apellidom
+    this.direccion = direccion
+    this.telefono = telefono 
+    this.email = email
+    this.estado = estado    
+  }
+
+
   @PrimaryGeneratedColumn({ type: "int", name: "idpersonal" })
   idpersonal: number;
 
@@ -28,7 +50,7 @@ export class Personal {
   email: string;
 
   @Column("tinyint", { name: "estado", width: 1, default: () => "'1'" })
-  estado: boolean;
+  estado: number;
 
   @Column("datetime", { name: "fecha", default: () => "CURRENT_TIMESTAMP" })
   fecha: Date;
