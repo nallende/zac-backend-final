@@ -38,7 +38,7 @@ export const updateAfp = async (
     return res.json(results);
   }
 
-  return res.json({msg: 'CAfp no Encontrado'});
+  return res.json({msg: 'Afp no Encontrada'});
 };
 
 export const deleteAfp = async (req: Request, res: Response): Promise<Response> => {
