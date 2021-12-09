@@ -2,8 +2,6 @@ import { Connection} from 'typeorm';
 import { name, internet, random,  lorem, company, address, phone, image, datatype } from 'faker/locale/es';
 import { Personal } from '../entities';
 
-
-
 const createPersonal = async (con: Connection) => {
  
   for (const _ of Array.from({ length: 20 })) {
@@ -28,7 +26,6 @@ const createPersonal = async (con: Connection) => {
     );
    await con.manager.save(personal);
   }
-
  
 };
 export { createPersonal };

@@ -3,6 +3,12 @@ import { Contrato } from "./Contrato";
 
 @Entity("cargo", { schema: "zac_cloud" })
 export class Cargo {
+
+constructor( nombre: string, estado: number){
+  this.nombre = nombre
+  this.estado = estado
+}
+
   @PrimaryGeneratedColumn({ type: "int", name: "idcargo" })
   idcargo: number;
 
@@ -10,7 +16,7 @@ export class Cargo {
   nombre: string;
 
   @Column("tinyint", { name: "estado", width: 1, default: () => "'1'" })
-  estado: boolean;
+  estado: number;
 
   @Column("timestamp", { name: "fecha", default: () => "CURRENT_TIMESTAMP" })
   fecha: Date;
