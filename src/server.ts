@@ -2,7 +2,7 @@ import 'reflect-metadata'
 import { createConnection} from 'typeorm'
 import app from './app';
 //import { smokeTest } from './smoke-test';
-import {createUsuarios, createPersonal } from './utils'    
+import {createUsuarios, createPersonal, createUsers } from './utils'    
 
 import {Afp,  Cargo, Empresa, Descuento, Contrato,
      Modulo, ModuloEmpresa, Salud, Tipocontrato, Personal,
@@ -22,8 +22,9 @@ createConnection().then(async connection => {
     app.listen(process.env.PORT || 3001, ()=>console.log(`Servidor activo en http://localhost:${port}`));
     
     await connection.synchronize(true)
-    //await(createUsuarios(connection));
-    //await(createPersonal(connection));
+      //await(createUsuarios(connection));
+      //await(createPersonal(connection));
+      //await(createUsers(connection));
     //await connection runMigrations();
 
 }).catch(error => console.log(error));

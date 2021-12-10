@@ -17,7 +17,7 @@ export const getUsuario = async (
   req: Request,
   res: Response
 ): Promise<Response> => {
-  const results = await getRepository(Usuario).findOne(req.params.id);
+  const results = await getRepository(Usuario).findOne(req.params.id)
   return res.json(results);
 };
 
