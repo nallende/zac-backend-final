@@ -1,15 +1,25 @@
 import express from 'express';
 import cors from 'cors';
-
+import 'reflect-metadata'
+import swaggerUi from "swagger-ui-express"
 
 
 const app = express();
 
 // Middlewares
-//app.use(cors());
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// app.use(
+//     "/docs",
+//     swaggerUi.serve,
+//     swaggerUi.setup(undefined, {
+//       swaggerOptions: {
+//         url: "/swagger.json",
+//       },
+//     })
+//   );
 
 // routes
 
@@ -45,3 +55,4 @@ app.use( saludRoutes );
 app.use( userRoutes );
 
 export default app;
+

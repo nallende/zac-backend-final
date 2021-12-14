@@ -1,24 +1,24 @@
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn, } from "typeorm";
 import { UsuarioEmpresa } from "./UsuarioEmpresa";
 
 @Entity("usuario", { schema: "zac_cloud" })
-export class Usuario {
+export class Usuario {  
   
-  constructor(
-    nombre: string,
-    apellido: string,
-    email: string,
-    login: string,
-    password: string,
-    estado: number
+   constructor(
+ nombre: string,
+ apellido: string,
+ email: string,
+ login: string,
+ password: string,
+ estado: number
   ) {
-    this.nombre = nombre
-    this.apellido = apellido
-    this.email = email
-    this.login = login
-    this.password = password
-    this.estado = estado
-  }
+     this.nombre = nombre
+     this.apellido = apellido
+     this.email = email
+     this.login = login
+     this.password = password
+     this.estado = estado
+   }
 
   @PrimaryGeneratedColumn({ type: "int", name: "idusuario" })
   idusuario: number;

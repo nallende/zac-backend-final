@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { getRepository } from "typeorm";
-import { Tipoingreso } from "../entities/TipoIngreso";
+import { Tipoingreso } from "../entities";
 
 export const getTipoIngresos = async (
   req: Request,

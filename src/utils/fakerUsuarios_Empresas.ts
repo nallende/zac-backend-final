@@ -29,7 +29,7 @@ const createUsuarios = async (con: Connection) => {
 
   await createEmpresas(con, usuarios);
 };
-const createEmpresas= async(con: Connection, usuarios)=>{
+const createEmpresas= async(con: Connection, usuarios: Array<Usuario>)=>{
   for (const usuario of usuarios) {
 
    const nombre=company.companyName();

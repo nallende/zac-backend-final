@@ -5,3 +5,4 @@ build/
 tmp/
 temp/
 **/data:/var/lib/mysql:rw
+dist
