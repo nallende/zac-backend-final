@@ -5,7 +5,7 @@
     "username": "admin",
     "password": "6677",
     "database": "zac",
-    "synchronize": true,
+    "synchronize": false,
     "logging": false,
     "entities": [
         "src/entities/**/*.ts"
